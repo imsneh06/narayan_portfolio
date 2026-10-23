@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/ThemeContext";
 import Script from "next/script";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import LocationTracker from "@/components/LocationTracker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -139,6 +140,7 @@ export default function RootLayout({
         </ThemeProvider>
         <SpeedInsights />
         <Analytics />
+        <LocationTracker />
       </body>
     </html>
   );
