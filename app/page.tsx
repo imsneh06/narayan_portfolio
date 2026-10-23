@@ -269,10 +269,6 @@ export default function Home() {
                 <span className="font-mono text-[11px] tracking-[0.25em] uppercase text-warm-muted">
                   00 / SELECTED PORTFOLIO
                 </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-blue" />
-                <span className="font-mono text-[11px] tracking-[0.2em] uppercase text-warm-muted">
-                  2026 EDITION
-                </span>
               </div>
 
               {/* Title & Roles */}
