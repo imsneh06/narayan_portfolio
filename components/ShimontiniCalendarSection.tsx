@@ -153,22 +153,22 @@ export default function ShimontiniCalendarSection({ embedded = false }: Props) {
             key={iso}
             onClick={() => handleSelectDateFromGrid(reel.id)}
             style={{ borderColor: pillarMeta.colorVar }}
-            className={`aspect-square rounded-xl p-2 sm:p-2.5 flex flex-col justify-between text-left transition-all relative border-2 bg-dark-surface hover:scale-[1.05] hover:shadow-lg ${
+            className={`aspect-square rounded-lg p-2 sm:p-2.5 flex flex-col justify-between text-left transition-colors relative border bg-dark-surface hover:bg-dark-surface2 ${
               isDim ? "opacity-25" : "opacity-100"
             }`}
             title={`Reel #${reel.id} (${d} ${MONTH_NAMES[monthIndex]}): ${reel.title}`}
           >
             <div className="flex items-center justify-between w-full">
-              <span className="font-mono text-xs font-bold text-warm-white">{d}</span>
+              <span className="font-mono text-xs font-medium text-warm-white tabular-nums">{d}</span>
               <span
                 style={{ backgroundColor: pillarMeta.colorVar }}
-                className="w-2 h-2 rounded-full"
+                className="w-1.5 h-1.5 rounded-full"
               />
             </div>
             <div className="space-y-0.5">
               <span
                 style={{ color: pillarMeta.colorVar }}
-                className="font-mono text-[10px] font-bold block"
+                className="font-mono text-[10px] font-medium block"
               >
                 #{reel.id}
               </span>
@@ -182,9 +182,9 @@ export default function ShimontiniCalendarSection({ embedded = false }: Props) {
         cells.push(
           <div
             key={iso}
-            className="aspect-square rounded-xl p-2 border border-white/[0.04] bg-white/[0.01] flex flex-col justify-start"
+            className="aspect-square rounded-lg p-2 border border-white/[0.04] bg-white/[0.01] flex flex-col justify-start"
           >
-            <span className="font-mono text-xs text-warm-muted">{d}</span>
+            <span className="font-mono text-xs text-warm-muted tabular-nums">{d}</span>
           </div>
         );
       }
@@ -192,9 +192,9 @@ export default function ShimontiniCalendarSection({ embedded = false }: Props) {
 
     return (
       <div className="space-y-4">
-        <h4 className="text-xl font-sans font-bold text-warm-white flex items-center justify-between">
+        <h4 className="text-lg font-sans font-semibold text-warm-white flex items-center justify-between">
           <span>{monthTitle}</span>
-          <span className="font-mono text-xs text-warm-muted font-normal">
+          <span className="font-mono text-xs text-warm-muted font-normal tabular-nums">
             {daysInMonth} Days
           </span>
         </h4>
@@ -215,20 +215,20 @@ export default function ShimontiniCalendarSection({ embedded = false }: Props) {
   };
 
   return (
-    <div className={`space-y-12 ${embedded ? "p-6 sm:p-10" : "max-w-6xl mx-auto px-4 sm:px-6 py-12"}`}>
+    <div className={`space-y-10 ${embedded ? "p-6 sm:p-8" : "max-w-6xl mx-auto px-4 sm:px-6 py-10"}`}>
       {/* ─── PHASE STRIP ─── */}
       <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-warm-muted">
+        <div className="flex items-center justify-between font-mono text-xs">
+          <span className="uppercase tracking-wider text-warm-muted">
             Campaign Timeline &amp; Phases (Oct–Nov 2026)
           </span>
-          <span className="font-mono text-xs text-accent-blue font-semibold">
+          <span className="text-accent-blue font-medium tabular-nums">
             43 Scheduled Reels
           </span>
         </div>
 
         {/* Proportional visual bar */}
-        <div className="flex rounded-full overflow-hidden h-3 bg-white/[0.06] p-0.5 gap-1">
+        <div className="flex rounded-md overflow-hidden h-2.5 bg-white/[0.06] p-0.5 gap-1">
           {SHIMONTINI_PHASES.map((ph) => {
             const count = ph.end - ph.start + 1;
             const pct = (count / 43) * 100;
@@ -236,7 +236,7 @@ export default function ShimontiniCalendarSection({ embedded = false }: Props) {
               <div
                 key={ph.name}
                 style={{ width: `${pct}%` }}
-                className={`h-full rounded-full ${ph.color} transition-all`}
+                className={`h-full rounded-sm ${ph.color} transition-all`}
                 title={`${ph.name} (${ph.range}): ${count} reels`}
               />
             );
@@ -248,10 +248,10 @@ export default function ShimontiniCalendarSection({ embedded = false }: Props) {
           {SHIMONTINI_PHASES.map((ph) => (
             <div key={ph.name} className="space-y-0.5">
               <div className="flex items-center gap-1.5">
-                <span className={`w-2 h-2 rounded-full ${ph.color}`} />
-                <span className="font-bold text-warm-white truncate text-[11px]">{ph.name}</span>
+                <span className={`w-1.5 h-1.5 rounded-full ${ph.color}`} />
+                <span className="font-medium text-warm-white truncate text-[11px]">{ph.name}</span>
               </div>
-              <span className="text-[10px] text-warm-muted block pl-3.5">
+              <span className="text-[10px] text-warm-muted block pl-3 tabular-nums">
                 {ph.range} · {ph.end - ph.start + 1} reels
               </span>
             </div>
@@ -260,20 +260,20 @@ export default function ShimontiniCalendarSection({ embedded = false }: Props) {
       </div>
 
       {/* ─── CONTROLS: FILTER CHIPS, SEARCH, & VIEW TOGGLE ─── */}
-      <div className="space-y-6 pt-4 border-t border-white/[0.08]">
+      <div className="space-y-5 pt-4 border-t border-white/[0.08]">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           {/* Pillar Chips */}
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => setSelectedPillar("all")}
-              className={`px-3.5 py-1.5 rounded-full font-mono text-xs uppercase tracking-wider transition-all flex items-center gap-2 ${
+              className={`px-3 py-1 rounded-md font-mono text-xs uppercase tracking-wider transition-colors flex items-center gap-2 ${
                 selectedPillar === "all"
-                  ? "bg-warm-white text-dark-bg font-bold shadow-md"
-                  : "bg-white/[0.04] text-warm-gray hover:text-warm-white border border-white/[0.08]"
+                  ? "bg-dark-surface2 text-warm-white border border-dark-border font-medium"
+                  : "bg-dark-surface text-warm-muted hover:text-warm-white border border-white/[0.08]"
               }`}
             >
               <span>All Posts</span>
-              <span className="text-[10px] opacity-75">({pillarCounts.all})</span>
+              <span className="text-[10px] tabular-nums text-warm-muted">({pillarCounts.all})</span>
             </button>
 
             {(Object.keys(SHIMONTINI_PILLARS) as Array<"B" | "P" | "S" | "I">).map((key) => {
@@ -283,48 +283,48 @@ export default function ShimontiniCalendarSection({ embedded = false }: Props) {
                 <button
                   key={key}
                   onClick={() => setSelectedPillar(key)}
-                  className={`px-3.5 py-1.5 rounded-full font-mono text-xs uppercase tracking-wider transition-all flex items-center gap-2 ${
+                  className={`px-3 py-1 rounded-md font-mono text-xs uppercase tracking-wider transition-colors flex items-center gap-2 ${
                     isSelected
-                      ? "bg-warm-white text-dark-bg font-bold shadow-md"
-                      : "bg-white/[0.04] text-warm-gray hover:text-warm-white border border-white/[0.08]"
+                      ? "bg-dark-surface2 text-warm-white border border-dark-border font-medium"
+                      : "bg-dark-surface text-warm-muted hover:text-warm-white border border-white/[0.08]"
                   }`}
                 >
                   <span
                     style={{ backgroundColor: meta.colorVar }}
-                    className="w-2 h-2 rounded-full"
+                    className="w-1.5 h-1.5 rounded-full"
                   />
                   <span>{meta.name}</span>
-                  <span className="text-[10px] opacity-75">({pillarCounts[key]})</span>
+                  <span className="text-[10px] tabular-nums text-warm-muted">({pillarCounts[key]})</span>
                 </button>
               );
             })}
           </div>
 
           {/* View switcher */}
-          <div className="flex items-center gap-2 self-start lg:self-auto">
-            <div className="inline-flex rounded-full p-1 bg-white/[0.04] border border-white/[0.08]">
+          <div className="flex items-center gap-2 self-start lg:self-auto font-mono text-xs">
+            <div className="inline-flex rounded-lg p-1 bg-dark-surface2 border border-dark-borderSubtle">
               <button
                 onClick={() => setViewMode("list")}
-                className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full font-mono text-xs transition-all ${
+                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md transition-colors ${
                   viewMode === "list"
-                    ? "bg-accent-blue text-white font-bold"
-                    : "text-warm-gray hover:text-warm-white"
+                    ? "bg-dark-surface text-warm-white border border-dark-border font-medium"
+                    : "text-warm-muted hover:text-warm-white"
                 }`}
               >
                 <FiList size={13} />
-                <span>List View</span>
+                <span>List</span>
               </button>
 
               <button
                 onClick={() => setViewMode("grid")}
-                className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full font-mono text-xs transition-all ${
+                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md transition-colors ${
                   viewMode === "grid"
-                    ? "bg-accent-blue text-white font-bold"
-                    : "text-warm-gray hover:text-warm-white"
+                    ? "bg-dark-surface text-warm-white border border-dark-border font-medium"
+                    : "text-warm-muted hover:text-warm-white"
                 }`}
               >
                 <FiCalendar size={13} />
-                <span>Monthly Grid</span>
+                <span>Grid</span>
               </button>
             </div>
           </div>
@@ -333,35 +333,35 @@ export default function ShimontiniCalendarSection({ embedded = false }: Props) {
         {/* Search bar & Expand All */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="relative flex-1 max-w-md">
-            <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-warm-muted" />
+            <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-warm-muted w-3.5 h-3.5" />
             <input
               type="text"
               placeholder="Search hooks, sarees, drapes, or captions..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 rounded-xl bg-white/[0.03] border border-white/[0.08] text-warm-white placeholder:text-warm-muted font-sans text-xs focus:outline-none focus:border-accent-blue transition-colors"
+              className="w-full pl-10 pr-4 py-2 rounded-lg bg-dark-surface border border-dark-borderSubtle text-warm-white placeholder:text-warm-muted font-mono text-xs focus:outline-none focus:border-dark-border transition-colors"
             />
           </div>
 
           <div className="flex items-center gap-4 font-mono text-xs text-warm-muted">
             <span>
-              Showing <strong className="text-warm-white">{filteredReels.length}</strong> of 43 reels
+              Showing <span className="text-warm-white tabular-nums">{filteredReels.length}</span> of 43 reels
             </span>
 
             {viewMode === "list" && (
               <button
                 onClick={handleExpandAll}
-                className="inline-flex items-center gap-1.5 text-warm-gray hover:text-warm-white transition-colors"
+                className="inline-flex items-center gap-1 text-warm-gray hover:text-warm-white transition-colors"
               >
                 {expandedIds.size === filteredReels.length ? (
                   <>
-                    <FiChevronUp size={13} />
-                    <span>Collapse All</span>
+                    <FiChevronUp size={12} />
+                    <span>Collapse all</span>
                   </>
                 ) : (
                   <>
-                    <FiChevronDown size={13} />
-                    <span>Expand All</span>
+                    <FiChevronDown size={12} />
+                    <span>Expand all</span>
                   </>
                 )}
               </button>
@@ -403,26 +403,26 @@ export default function ShimontiniCalendarSection({ embedded = false }: Props) {
                 >
                   <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
                     {/* Date Block */}
-                    <div className="md:col-span-2 flex md:flex-col items-baseline md:items-start gap-2 md:gap-0 font-mono">
-                      <span className="text-3xl sm:text-4xl font-sans font-black text-warm-white leading-none">
+                    <div className="md:col-span-2 flex md:flex-col items-baseline md:items-start gap-1.5 md:gap-0 font-mono">
+                      <span className="text-2xl sm:text-3xl font-mono font-semibold text-warm-white leading-none tabular-nums">
                         {dayNum}
                       </span>
-                      <span className="text-xs uppercase tracking-wider text-warm-muted font-semibold mt-1">
+                      <span className="text-xs uppercase tracking-wider text-warm-muted font-medium mt-1">
                         {monthStr} 2026
                       </span>
-                      <span className="text-[11px] text-warm-muted/80">{weekdayStr}</span>
+                      <span className="text-[11px] text-warm-muted">{weekdayStr}</span>
                     </div>
 
                     {/* Main Content */}
-                    <div className="md:col-span-10 space-y-4">
+                    <div className="md:col-span-10 space-y-3.5">
                       {/* Meta Tags Row */}
-                      <div className="flex flex-wrap items-center gap-2.5 font-mono text-[10px] uppercase tracking-wider">
+                      <div className="flex flex-wrap items-center gap-2 font-mono text-[11px]">
                         <span
                           style={{
                             borderColor: pillarMeta.colorVar,
                             color: pillarMeta.colorVar,
                           }}
-                          className="px-2.5 py-0.5 rounded-full border bg-white/[0.03] font-bold inline-flex items-center gap-1.5"
+                          className="px-2 py-0.5 rounded border bg-white/[0.03] font-medium inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider"
                         >
                           <span
                             style={{ backgroundColor: pillarMeta.colorVar }}
@@ -436,17 +436,17 @@ export default function ShimontiniCalendarSection({ embedded = false }: Props) {
                         <span className="text-warm-muted">·</span>
                         <span className="text-warm-muted">Reel / Video</span>
                         <span className="text-warm-muted">·</span>
-                        <span className="text-accent-blue font-semibold">Strategist: Sneh</span>
+                        <span className="text-warm-white">Strategist: Sneh</span>
                       </div>
 
                       {/* Title & Caption */}
                       <div className="space-y-2">
-                        <h3 className="text-xl sm:text-2xl font-sans font-bold text-warm-white">
+                        <h3 className="text-lg sm:text-xl font-sans font-semibold text-warm-white">
                           #{reel.id} · {reel.title}
                         </h3>
 
-                        <div className="pl-4 border-l-2 border-white/[0.15] py-1">
-                          <p className="text-sm sm:text-base text-warm-gray font-light italic leading-relaxed">
+                        <div className="pl-3.5 border-l-2 border-dark-borderSubtle py-0.5">
+                          <p className="text-sm text-warm-gray font-normal leading-relaxed">
                             &ldquo;{reel.caption}&rdquo;
                           </p>
                         </div>
@@ -465,32 +465,32 @@ export default function ShimontiniCalendarSection({ embedded = false }: Props) {
                       </div>
 
                       {/* Copy Caption Action */}
-                      <div className="pt-1 flex items-center gap-3">
+                      <div className="pt-1 flex items-center gap-3 font-mono text-xs">
                         <button
                           onClick={() => handleCopyCaption(reel)}
-                          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-white/[0.08] hover:border-white/[0.2] bg-white/[0.02] hover:bg-white/[0.05] text-xs font-mono text-warm-gray hover:text-warm-white transition-all"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-dark-borderSubtle bg-dark-surface2 hover:border-dark-border text-warm-gray hover:text-warm-white transition-colors"
                         >
                           {isCopied ? (
                             <>
                               <FiCheck size={12} className="text-emerald-400" />
-                              <span className="text-emerald-400 font-semibold">Caption Copied!</span>
+                              <span className="text-emerald-400 font-medium">Caption Copied</span>
                             </>
                           ) : (
                             <>
-                              <FiCopy size={12} />
-                              <span>Copy Caption + Tags</span>
+                              <FiCopy size={12} className="text-warm-muted" />
+                              <span>Copy caption + tags</span>
                             </>
                           )}
                         </button>
 
                         <button
                           onClick={() => toggleExpand(reel.id)}
-                          className="inline-flex items-center gap-1.5 text-xs font-mono text-accent-blue hover:underline"
+                          className="inline-flex items-center gap-1 text-warm-gray hover:text-warm-white transition-colors"
                         >
-                          <span>{isExpanded ? "Hide Breakdown" : "View Camera & Plot"}</span>
+                          <span>{isExpanded ? "Hide breakdown" : "Camera and plot breakdown"}</span>
                           <FiChevronDown
                             size={12}
-                            className={`transition-transform ${isExpanded ? "rotate-180" : ""}`}
+                            className={`transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`}
                           />
                         </button>
                       </div>
@@ -502,16 +502,16 @@ export default function ShimontiniCalendarSection({ embedded = false }: Props) {
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.25 }}
-                            className="overflow-hidden pt-3 border-t border-white/[0.06]"
+                            transition={{ duration: 0.2 }}
+                            className="overflow-hidden pt-3 border-t border-dark-borderSubtle"
                           >
-                            <div className="p-5 rounded-xl bg-black/40 border border-white/[0.06] space-y-4 text-xs font-mono">
+                            <div className="p-4 sm:p-5 rounded-lg bg-dark-surface2 border border-dark-borderSubtle space-y-3.5 text-xs font-mono">
                               {/* Visual Hook */}
                               <div>
                                 <span className="text-[10px] uppercase tracking-wider text-warm-muted block mb-1">
-                                  VISUAL HOOK (FIRST 2 SECONDS)
+                                  Visual hook (first 2 seconds)
                                 </span>
-                                <p className="text-sm font-sans font-semibold text-rose-300">
+                                <p className="text-sm font-sans font-medium text-warm-white">
                                   &ldquo;{reel.hook}&rdquo;
                                 </p>
                               </div>
@@ -519,13 +519,13 @@ export default function ShimontiniCalendarSection({ embedded = false }: Props) {
                               {/* Plot */}
                               <div>
                                 <span className="text-[10px] uppercase tracking-wider text-warm-muted block mb-1">
-                                  SHOT SEQUENCE &amp; PLOT
+                                  Shot sequence and plot
                                 </span>
-                                <p className="text-warm-gray leading-relaxed font-light">
+                                <p className="text-warm-gray leading-relaxed font-normal">
                                   {reel.plot}
                                 </p>
                                 {reel.confirmNote && (
-                                  <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-dashed border-amber-500/50 bg-amber-500/10 text-amber-300 text-[11px]">
+                                  <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-amber-500/30 bg-amber-500/10 text-amber-300 text-[11px]">
                                     <FiInfo size={11} />
                                     <span>To confirm with client: {reel.confirmNote}</span>
                                   </div>
@@ -535,9 +535,9 @@ export default function ShimontiniCalendarSection({ embedded = false }: Props) {
                               {/* Camera Direction */}
                               <div>
                                 <span className="text-[10px] uppercase tracking-wider text-warm-muted block mb-1">
-                                  CAMERA DIRECTION &amp; SETUP
+                                  Camera direction and setup
                                 </span>
-                                <p className="text-warm-gray leading-relaxed font-light">
+                                <p className="text-warm-gray leading-relaxed font-normal">
                                   {reel.camera}
                                 </p>
                               </div>
@@ -546,7 +546,7 @@ export default function ShimontiniCalendarSection({ embedded = false }: Props) {
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-white/[0.04]">
                                 <div>
                                   <span className="text-[10px] uppercase tracking-wider text-warm-muted block mb-1">
-                                    FABRIC &amp; WEAVE
+                                    Fabric and weave
                                   </span>
                                   <span className="text-warm-white font-medium">
                                     {reel.fabric}
@@ -554,7 +554,7 @@ export default function ShimontiniCalendarSection({ embedded = false }: Props) {
                                 </div>
                                 <div>
                                   <span className="text-[10px] uppercase tracking-wider text-warm-muted block mb-1">
-                                    AUDIO &amp; SOUND DESIGN
+                                    Audio and sound design
                                   </span>
                                   <span className="text-warm-white font-medium">
                                     {reel.audio}
@@ -565,9 +565,9 @@ export default function ShimontiniCalendarSection({ embedded = false }: Props) {
                               {/* Strategic Reason */}
                               <div className="pt-2 border-t border-white/[0.04]">
                                 <span className="text-[10px] uppercase tracking-wider text-warm-muted block mb-1">
-                                  STRATEGIC REASON (WHY IT WORKS)
+                                  Strategic rationale
                                 </span>
-                                <p className="text-warm-gray leading-relaxed font-light">
+                                <p className="text-warm-gray leading-relaxed font-normal">
                                   {reel.why}
                                 </p>
                               </div>

@@ -123,61 +123,61 @@ export default function ZeeContentCalendar({
   const getPillarBadgeClasses = (pillar: ContentPillar) => {
     switch (pillar) {
       case "Promotional":
-        return "bg-[#e2ecff] text-[#1b3f9e] border-[#2f63e0]/40 dark:bg-[#2f63e0]/20 dark:text-[#93b5ff] dark:border-[#2f63e0]/50";
+        return "bg-blue-500/10 text-blue-400 border-blue-500/20";
       case "Entertainment":
-        return "bg-[#ffe0ec] text-[#8a1049] border-[#c2275f]/40 dark:bg-[#c2275f]/20 dark:text-[#ff8ab4] dark:border-[#c2275f]/50";
+        return "bg-purple-500/10 text-purple-400 border-purple-500/20";
       case "Nostalgia & culture":
-        return "bg-[#fff0c2] text-[#5e4100] border-[#a56a00]/40 dark:bg-[#a56a00]/25 dark:text-[#ffd566] dark:border-[#a56a00]/50";
+        return "bg-amber-500/10 text-amber-400 border-amber-500/20";
       case "Community":
-        return "bg-[#d9f5e6] text-[#0b5b3d] border-[#17855a]/40 dark:bg-[#17855a]/20 dark:text-[#79e2b1] dark:border-[#17855a]/50";
+        return "bg-emerald-500/10 text-emerald-400 border-emerald-500/20";
     }
   };
 
   const getPillarDotColor = (pillar: ContentPillar) => {
     switch (pillar) {
       case "Promotional":
-        return "bg-[#2f63e0]";
+        return "bg-blue-400";
       case "Entertainment":
-        return "bg-[#c2275f]";
+        return "bg-purple-400";
       case "Nostalgia & culture":
-        return "bg-[#a56a00]";
+        return "bg-amber-400";
       case "Community":
-        return "bg-[#17855a]";
+        return "bg-emerald-400";
     }
   };
 
   const getPillarBorderLeftColor = (pillar: ContentPillar) => {
     switch (pillar) {
       case "Promotional":
-        return "border-l-[#2f63e0]";
+        return "border-l-blue-400";
       case "Entertainment":
-        return "border-l-[#c2275f]";
+        return "border-l-purple-400";
       case "Nostalgia & culture":
-        return "border-l-[#a56a00]";
+        return "border-l-amber-400";
       case "Community":
-        return "border-l-[#17855a]";
+        return "border-l-emerald-400";
     }
   };
 
   return (
     <div
       id="content-calendar"
-      className="rounded-3xl border border-white/[0.08] bg-dark-surface overflow-hidden shadow-2xl transition-colors"
+      className="rounded-2xl border border-dark-borderSubtle bg-dark-surface overflow-hidden transition-colors"
     >
       {/* Calendar Header Bar */}
-      <div className="p-5 sm:p-7 md:p-8 bg-gradient-to-r from-[#1b2559] via-[#1c357d] to-[#144766] text-white flex flex-col md:flex-row md:items-center justify-between gap-5 border-b border-white/[0.08]">
-        <div className="space-y-1.5">
+      <div className="p-6 sm:p-8 bg-dark-surface text-warm-white flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-dark-borderSubtle">
+        <div className="space-y-1">
           <div className="flex items-center gap-2">
-            <span className="text-[11px] uppercase tracking-[0.2em] font-mono font-bold text-blue-200">
+            <span className="text-xs uppercase tracking-wider font-mono text-warm-muted">
               Interactive July 2026 Grid
             </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            <span className="text-[11px] font-mono text-emerald-200">16 Concepts</span>
+            <span className="text-warm-muted">·</span>
+            <span className="text-xs font-mono text-warm-muted tabular-nums">16 Concepts</span>
           </div>
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-white">
+          <h3 className="text-xl sm:text-2xl font-semibold tracking-tight text-warm-white">
             July 2026 Content Calendar
           </h3>
-          <p className="text-xs sm:text-sm text-blue-100/85 max-w-xl font-light">
+          <p className="text-xs sm:text-sm text-warm-gray max-w-xl font-normal">
             Bi-daily editorial framework combining serial drama, regional cinema nostalgia, audience polls, and tune-in schedules.
           </p>
         </div>
@@ -186,41 +186,41 @@ export default function ZeeContentCalendar({
         <div
           role="group"
           aria-label="Calendar view selector"
-          className="inline-flex items-center self-start md:self-center bg-black/40 p-1.5 rounded-2xl border border-white/15 shrink-0"
+          className="inline-flex items-center self-start md:self-center bg-dark-surface2 p-1 rounded-lg border border-dark-borderSubtle shrink-0 font-mono text-xs"
         >
           <button
             type="button"
             id="view-list-toggle"
             aria-pressed={view === "list"}
             onClick={() => setView("list")}
-            className={`min-h-[44px] px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 ${
+            className={`px-3 py-1.5 rounded-md font-medium transition-colors flex items-center gap-1.5 ${
               view === "list"
-                ? "bg-white text-slate-950 shadow-lg"
-                : "text-white/80 hover:text-white hover:bg-white/10"
+                ? "bg-dark-surface text-warm-white border border-dark-border"
+                : "text-warm-muted hover:text-warm-white"
             }`}
           >
-            <FiList className="w-4 h-4" aria-hidden="true" />
-            <span>List View</span>
+            <FiList className="w-3.5 h-3.5" aria-hidden="true" />
+            <span>List</span>
           </button>
           <button
             type="button"
             id="view-grid-toggle"
             aria-pressed={view === "calendar"}
             onClick={() => setView("calendar")}
-            className={`min-h-[44px] px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 ${
+            className={`px-3 py-1.5 rounded-md font-medium transition-colors flex items-center gap-1.5 ${
               view === "calendar"
-                ? "bg-white text-slate-950 shadow-lg"
-                : "text-white/80 hover:text-white hover:bg-white/10"
+                ? "bg-dark-surface text-warm-white border border-dark-border"
+                : "text-warm-muted hover:text-warm-white"
             }`}
           >
-            <FiCalendar className="w-4 h-4" aria-hidden="true" />
-            <span>Monthly Grid</span>
+            <FiCalendar className="w-3.5 h-3.5" aria-hidden="true" />
+            <span>Grid</span>
           </button>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="p-4 sm:p-6 border-b border-white/[0.08] bg-black/20 space-y-4">
+      <div className="p-4 sm:p-6 border-b border-dark-borderSubtle bg-dark-bg/40 space-y-4">
         <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
           {/* Search Input */}
           <div className="relative flex-1">
@@ -228,7 +228,7 @@ export default function ZeeContentCalendar({
               Search calendar concepts, captions, or Bengali text
             </label>
             <FiSearch
-              className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-warm-muted"
+              className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-warm-muted"
               aria-hidden="true"
             />
             <input
@@ -237,23 +237,23 @@ export default function ZeeContentCalendar({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search concepts, formats, or Bengali (e.g. কমেন্টে)..."
-              className="w-full min-h-[44px] pl-10 pr-10 py-2.5 rounded-xl border border-white/[0.1] bg-dark-surface2 text-sm text-warm-white placeholder-warm-muted focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+              className="w-full pl-10 pr-10 py-2 rounded-lg border border-dark-borderSubtle bg-dark-surface text-xs font-mono text-warm-white placeholder-warm-muted focus:outline-none focus:border-dark-border transition-colors"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery("")}
                 aria-label="Clear search query"
-                className="absolute right-3 top-1/2 -translate-y-1/2 min-w-[32px] min-h-[32px] flex items-center justify-center text-warm-muted hover:text-warm-white transition"
+                className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center text-warm-muted hover:text-warm-white transition-colors"
               >
-                <FiX className="w-4 h-4" />
+                <FiX className="w-3.5 h-3.5" />
               </button>
             )}
           </div>
 
           {/* Quick status count */}
           <div className="text-xs font-mono text-warm-muted shrink-0 self-center">
-            Showing <strong className="text-warm-white">{filteredEntries.length}</strong> of {entries.length} concepts
+            Showing <span className="text-warm-white tabular-nums">{filteredEntries.length}</span> of {entries.length} concepts
           </div>
         </div>
 
@@ -261,10 +261,10 @@ export default function ZeeContentCalendar({
         <div
           role="group"
           aria-label="Pillar filters"
-          className="flex flex-wrap items-center gap-2 pt-1"
+          className="flex flex-wrap items-center gap-2 pt-1 font-mono text-xs"
         >
-          <span className="text-xs font-semibold text-warm-muted mr-1 flex items-center gap-1.5">
-            <FiFilter className="w-3.5 h-3.5" aria-hidden="true" />
+          <span className="text-warm-muted mr-1 flex items-center gap-1.5">
+            <FiFilter className="w-3 h-3" aria-hidden="true" />
             Pillars:
           </span>
 
@@ -274,14 +274,14 @@ export default function ZeeContentCalendar({
             id="filter-pillar-all"
             aria-pressed={selectedPillar === null}
             onClick={() => setSelectedPillar(null)}
-            className={`min-h-[44px] inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold border transition focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 ${
+            className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border transition-colors ${
               selectedPillar === null
-                ? "bg-accent-blue text-white border-accent-blue shadow-md"
-                : "bg-white/[0.04] text-warm-gray border-white/[0.08] hover:border-white/20 hover:text-warm-white"
+                ? "bg-dark-surface2 text-warm-white border-dark-border font-medium"
+                : "bg-dark-surface text-warm-muted border-dark-borderSubtle hover:text-warm-white"
             }`}
           >
             <span>All Pillars</span>
-            <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-black/20 font-mono">
+            <span className="text-[10px] text-warm-muted tabular-nums">
               {entries.length}
             </span>
           </button>
@@ -291,7 +291,6 @@ export default function ZeeContentCalendar({
             const isSelected = selectedPillar === p.name;
             const count = entries.filter((e) => e.pillar === p.name).length;
             const dotClass = getPillarDotColor(p.name);
-            const badgeClass = getPillarBadgeClasses(p.name);
 
             return (
               <button
@@ -300,15 +299,15 @@ export default function ZeeContentCalendar({
                 id={`filter-pillar-${p.name.toLowerCase().replace(/[^a-z0-9]/g, "-")}`}
                 aria-pressed={isSelected}
                 onClick={() => setSelectedPillar(isSelected ? null : p.name)}
-                className={`min-h-[44px] inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold border transition focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 ${
+                className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border transition-colors ${
                   isSelected
-                    ? `${badgeClass} ring-2 ring-current shadow-md`
-                    : "bg-white/[0.04] text-warm-gray border-white/[0.08] hover:border-white/20 hover:text-warm-white"
+                    ? "bg-dark-surface2 text-warm-white border-dark-border font-medium"
+                    : "bg-dark-surface text-warm-muted border-dark-borderSubtle hover:text-warm-white"
                 }`}
               >
-                <span className={`w-2.5 h-2.5 rounded-full ${dotClass} shrink-0`} aria-hidden="true" />
+                <span className={`w-1.5 h-1.5 rounded-full ${dotClass} shrink-0`} aria-hidden="true" />
                 <span>{p.name}</span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-black/20 font-mono">
+                <span className="text-[10px] text-warm-muted tabular-nums">
                   {count}
                 </span>
               </button>
@@ -319,7 +318,7 @@ export default function ZeeContentCalendar({
             <button
               type="button"
               onClick={() => setSelectedPillar(null)}
-              className="text-xs font-mono text-accent-blue hover:underline ml-2"
+              className="text-xs font-mono text-warm-white hover:underline ml-1"
             >
               Reset filter
             </button>
@@ -331,14 +330,11 @@ export default function ZeeContentCalendar({
       <div className="p-4 sm:p-6 md:p-8">
         {view === "list" ? (
           /* ================= LIST VIEW ================= */
-          <div className="space-y-4" role="region" aria-label="Content calendar list view">
+          <div className="space-y-3.5" role="region" aria-label="Content calendar list view">
             {filteredEntries.length === 0 ? (
-              <div className="py-16 text-center text-warm-muted space-y-3">
-                <p className="text-base font-medium text-warm-gray">
+              <div className="py-14 text-center text-warm-muted space-y-2 font-mono">
+                <p className="text-sm text-warm-white">
                   No concepts match your search or filter.
-                </p>
-                <p className="text-xs">
-                  Try searching for another keyword or reset the pillar filter.
                 </p>
                 <button
                   type="button"
@@ -346,7 +342,7 @@ export default function ZeeContentCalendar({
                     setSelectedPillar(null);
                     setSearchQuery("");
                   }}
-                  className="min-h-[44px] px-4 py-2 rounded-xl bg-white/[0.06] text-accent-blue text-xs font-semibold hover:bg-white/[0.1] transition"
+                  className="px-3 py-1.5 rounded-md bg-dark-surface2 text-warm-white text-xs border border-dark-borderSubtle hover:border-dark-border transition-colors"
                 >
                   Clear search and filters
                 </button>
@@ -367,29 +363,29 @@ export default function ZeeContentCalendar({
                       postRefs.current[entry.date] = el;
                     }}
                     tabIndex={-1}
-                    className={`rounded-2xl border transition-all duration-300 p-5 sm:p-6 bg-dark-surface2/60 border-l-4 ${borderLeftClass} ${
+                    className={`rounded-xl border transition-colors p-5 sm:p-6 bg-dark-surface border-l-2 ${borderLeftClass} ${
                       isHighlighted
-                        ? "ring-4 ring-amber-400/90 shadow-2xl scale-[1.01] bg-dark-surface2"
-                        : "border-white/[0.08] hover:border-white/20 hover:shadow-lg"
+                        ? "border-accent-blue bg-dark-surface2"
+                        : "border-dark-borderSubtle hover:border-dark-border"
                     }`}
                   >
                     <div className="flex flex-col sm:flex-row gap-4 sm:items-start">
                       {/* Date Badge */}
-                      <div className="flex sm:flex-col items-center justify-center min-w-[76px] px-3 py-2 rounded-xl bg-black/30 border border-white/[0.08] text-center self-start">
-                        <span className="text-2xl sm:text-3xl font-black text-warm-white font-mono leading-none">
+                      <div className="flex sm:flex-col items-center justify-center min-w-[64px] px-2.5 py-1.5 rounded-lg bg-dark-surface2 border border-dark-borderSubtle text-center self-start">
+                        <span className="text-xl sm:text-2xl font-semibold text-warm-white font-mono leading-none tabular-nums">
                           {dayStr}
                         </span>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-warm-muted mt-1 font-mono">
+                        <span className="text-[10px] uppercase tracking-wider text-warm-muted mt-1 font-mono">
                           Jul 2026
                         </span>
                       </div>
 
                       {/* Content Info */}
-                      <div className="flex-1 min-w-0 space-y-3">
+                      <div className="flex-1 min-w-0 space-y-2.5">
                         {/* Tags: Pillar + Format */}
-                        <div className="flex flex-wrap items-center gap-2">
+                        <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
                           <span
-                            className={`inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-bold border ${badgeClass}`}
+                            className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded border text-[11px] ${badgeClass}`}
                           >
                             <span
                               className={`w-1.5 h-1.5 rounded-full ${getPillarDotColor(
@@ -400,7 +396,7 @@ export default function ZeeContentCalendar({
                             {entry.pillar}
                           </span>
 
-                          <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-semibold bg-white/[0.05] text-warm-gray border border-white/[0.08]">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] bg-dark-surface2 text-warm-gray border border-dark-borderSubtle">
                             {getFormatIcon(entry.format)}
                             <span>{entry.format}</span>
                           </span>
@@ -408,31 +404,31 @@ export default function ZeeContentCalendar({
 
                         {/* Title & Direction */}
                         <div className="space-y-1">
-                          <h4 className="text-lg sm:text-xl font-bold font-sans text-warm-white leading-snug">
+                          <h4 className="text-base sm:text-lg font-semibold font-sans text-warm-white leading-snug">
                             {entry.title}
                           </h4>
-                          <p className="text-xs sm:text-sm text-warm-gray leading-relaxed font-light">
+                          <p className="text-xs sm:text-sm text-warm-gray leading-relaxed font-normal">
                             {entry.direction}
                           </p>
                         </div>
 
                         {/* Caption Concept Box */}
-                        <div className="rounded-xl p-3.5 sm:p-4 bg-black/35 border border-white/[0.08] space-y-2">
-                          <div className="flex items-center justify-between">
-                            <span className="text-[10px] uppercase font-mono tracking-widest text-warm-muted font-bold">
-                              Caption Concept
+                        <div className="rounded-lg p-3.5 bg-dark-surface2 border border-dark-borderSubtle space-y-2">
+                          <div className="flex items-center justify-between font-mono text-xs">
+                            <span className="text-[11px] uppercase tracking-wider text-warm-muted">
+                              Caption concept
                             </span>
                             {/* Copy button */}
                             <button
                               type="button"
                               onClick={() => handleCopyCaption(entry)}
                               aria-label={`Copy caption for ${entry.title}`}
-                              className="min-h-[36px] inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium border border-white/[0.1] bg-white/[0.04] text-warm-gray hover:text-warm-white hover:bg-white/[0.08] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+                              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs border border-dark-borderSubtle bg-dark-surface text-warm-gray hover:text-warm-white hover:border-dark-border transition-colors"
                             >
                               {isCopied ? (
                                 <>
                                   <FiCheck className="w-3.5 h-3.5 text-emerald-400" aria-hidden="true" />
-                                  <span className="text-emerald-400 font-semibold">Copied!</span>
+                                  <span className="text-emerald-400 font-medium">Copied</span>
                                 </>
                               ) : (
                                 <>
@@ -444,13 +440,13 @@ export default function ZeeContentCalendar({
                           </div>
 
                           {/* English bold + Bengali in parentheses */}
-                          <div className="space-y-1 pt-1">
-                            <p className="text-sm sm:text-base font-bold text-warm-white leading-relaxed">
+                          <div className="space-y-1 pt-0.5">
+                            <p className="text-sm font-medium text-warm-white leading-relaxed">
                               &ldquo;{entry.captionEn}&rdquo;
                             </p>
                             <p
                               lang="bn"
-                              className="text-sm sm:text-base text-warm-gray leading-relaxed font-bengali"
+                              className="text-sm text-warm-gray leading-relaxed font-bengali"
                             >
                               ({entry.captionBn})
                             </p>
@@ -465,14 +461,14 @@ export default function ZeeContentCalendar({
           </div>
         ) : (
           /* ================= MONTHLY GRID VIEW (JULY 2026) ================= */
-          <div className="space-y-5" role="region" aria-label="Content calendar monthly grid view">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2">
+          <div className="space-y-4" role="region" aria-label="Content calendar monthly grid view">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1">
               <div>
-                <h4 className="text-lg font-bold text-warm-white">
+                <h4 className="text-sm sm:text-base font-semibold text-warm-white">
                   July 2026 Editorial Grid
                 </h4>
                 <p className="text-xs text-warm-muted">
-                  Click any scheduled date to inspect its camera direction &amp; copy in List view.
+                  Select any scheduled date to inspect camera direction and copy in list view.
                 </p>
               </div>
               <span className="text-xs font-mono text-warm-muted">
@@ -481,11 +477,11 @@ export default function ZeeContentCalendar({
             </div>
 
             {/* DOW Headers (Mon-Sun) */}
-            <div className="grid grid-cols-7 gap-1 sm:gap-2 text-center border-b border-white/[0.08] pb-2">
+            <div className="grid grid-cols-7 gap-1 sm:gap-2 text-center border-b border-dark-borderSubtle pb-2">
               {DOW.map((day) => (
                 <div
                   key={day}
-                  className="text-[11px] font-mono font-bold uppercase tracking-wider text-warm-muted py-1"
+                  className="text-[11px] font-mono uppercase tracking-wider text-warm-muted py-1"
                 >
                   {day}
                 </div>
@@ -494,12 +490,12 @@ export default function ZeeContentCalendar({
 
             {/* 7-column Calendar Grid */}
             <div className="grid grid-cols-7 gap-1 sm:gap-2">
-              {/* Leading offset for July 2026 (Wed = 2 empty cells for Mon, Tue) */}
+              {/* Leading offset for July 2026 */}
               {Array.from({ length: FIRST_DAY_OFFSET }).map((_, i) => (
                 <div
                   key={`empty-${i}`}
                   aria-hidden="true"
-                  className="min-h-[48px] sm:min-h-[90px] md:min-h-[110px] rounded-xl bg-transparent opacity-20 border border-transparent"
+                  className="min-h-[44px] sm:min-h-[80px] rounded-lg opacity-0"
                 />
               ))}
 
@@ -522,31 +518,28 @@ export default function ZeeContentCalendar({
                       type="button"
                       onClick={() => handleSelectDay(entry.date)}
                       aria-label={`July ${dayNum}: ${entry.pillar} - ${entry.title}. Click to view in list.`}
-                      className={`min-h-[48px] sm:min-h-[90px] md:min-h-[110px] p-1.5 sm:p-2.5 rounded-xl text-left border-l-4 ${borderLeftClass} border border-white/[0.1] bg-dark-surface2/80 hover:bg-dark-surface2 hover:shadow-xl transition flex flex-col justify-between group focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 ${
+                      className={`min-h-[44px] sm:min-h-[80px] p-1.5 sm:p-2 rounded-lg text-left border-l-2 ${borderLeftClass} border border-dark-borderSubtle bg-dark-surface hover:bg-dark-surface2 transition-colors flex flex-col justify-between group ${
                         !isFilteredMatch ? "opacity-30 hover:opacity-100" : "opacity-100"
                       }`}
                     >
                       {/* Date number + pillar dot */}
                       <div className="flex items-center justify-between w-full">
-                        <span className="text-xs sm:text-sm font-black font-mono text-warm-white group-hover:text-blue-300 transition-colors">
+                        <span className="font-mono text-xs font-medium text-warm-white tabular-nums">
                           {dayNum}
                         </span>
                         <span
-                          className={`w-2.5 h-2.5 rounded-full ${dotColor} shrink-0`}
+                          className={`w-1.5 h-1.5 rounded-full ${dotColor} shrink-0`}
                           aria-hidden="true"
                         />
                       </div>
 
                       {/* Desktop only: Title snippet & format */}
-                      <p className="hidden sm:block text-[11px] font-semibold text-warm-gray group-hover:text-warm-white line-clamp-2 leading-tight">
+                      <p className="hidden sm:block text-[11px] text-warm-gray group-hover:text-warm-white line-clamp-2 leading-tight">
                         {entry.title}
                       </p>
 
-                      <div className="hidden sm:flex items-center justify-between text-[9px] uppercase font-mono tracking-wider text-warm-muted">
+                      <div className="hidden sm:flex items-center justify-between font-mono text-[9px] text-warm-muted">
                         <span className="truncate">{entry.pillar}</span>
-                        {entry.format === "Reel" && (
-                          <span className="text-pink-400 font-bold">Reel</span>
-                        )}
                       </div>
                     </button>
                   );
@@ -557,7 +550,7 @@ export default function ZeeContentCalendar({
                   <div
                     key={dayNum}
                     aria-label={`July ${dayNum}, no post scheduled`}
-                    className="min-h-[48px] sm:min-h-[90px] md:min-h-[110px] p-1.5 sm:p-2.5 rounded-xl border border-white/[0.04] bg-white/[0.01] text-warm-muted/50 text-xs font-mono flex flex-col justify-start"
+                    className="min-h-[44px] sm:min-h-[80px] p-1.5 sm:p-2 rounded-lg border border-dark-borderSubtle/40 bg-dark-surface2/30 text-warm-muted/50 text-xs font-mono flex flex-col justify-start tabular-nums"
                   >
                     <span>{dayNum}</span>
                   </div>
@@ -566,12 +559,12 @@ export default function ZeeContentCalendar({
             </div>
 
             {/* Pillar Legend */}
-            <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-white/[0.08] text-xs font-mono text-warm-muted">
-              <span className="font-semibold text-warm-white">Pillar Legend:</span>
+            <div className="flex flex-wrap items-center gap-4 pt-3 border-t border-dark-borderSubtle text-xs font-mono text-warm-muted">
+              <span className="text-warm-white">Pillar Legend:</span>
               {pillars.map((p) => (
-                <div key={p.name} className="flex items-center gap-2">
+                <div key={p.name} className="flex items-center gap-1.5">
                   <span
-                    className={`w-2.5 h-2.5 rounded-full ${getPillarDotColor(
+                    className={`w-1.5 h-1.5 rounded-full ${getPillarDotColor(
                       p.name
                     )}`}
                     aria-hidden="true"

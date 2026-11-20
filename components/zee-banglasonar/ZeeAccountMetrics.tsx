@@ -132,25 +132,25 @@ export default function ZeeAccountMetrics({
     <section
       id="account-performance"
       ref={sectionRef}
-      className="py-16 border-b border-white/[0.08] space-y-12"
+      className="py-14 border-b border-dark-borderSubtle space-y-10"
       aria-labelledby="metrics-heading"
     >
       {/* Section Header with Eyebrow */}
-      <div className="space-y-4">
-        <div className="flex items-center gap-3">
-          <span className="font-mono text-[11px] tracking-[0.25em] uppercase text-warm-muted">
-            04 / ACCOUNT PERFORMANCE METRICS
+      <div className="space-y-3">
+        <div className="flex items-center gap-2.5 font-mono text-xs">
+          <span className="uppercase tracking-wider text-warm-muted">
+            04 / Account Performance Metrics
           </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-          <span className="font-mono text-[11px] tracking-[0.2em] uppercase text-cyan-400 font-semibold">
-            INSTAGRAM RECAP
+          <span className="text-warm-muted">·</span>
+          <span className="text-accent-blue font-medium">
+            Instagram Recap
           </span>
         </div>
 
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <h2
             id="metrics-heading"
-            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans tracking-tight text-warm-white"
+            className="text-2xl sm:text-3xl font-semibold font-sans tracking-tight text-warm-white"
           >
             {data.heading}
           </h2>
@@ -159,16 +159,16 @@ export default function ZeeAccountMetrics({
             type="button"
             onClick={handleCopyMetrics}
             aria-label="Copy key hero metrics to clipboard"
-            className="min-h-[44px] self-start sm:self-auto inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/[0.1] bg-white/[0.05] text-xs font-mono font-medium text-warm-gray hover:text-warm-white hover:bg-white/[0.1] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+            className="min-h-[38px] self-start sm:self-auto inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md border border-dark-borderSubtle bg-dark-surface2 text-xs font-mono text-warm-gray hover:text-warm-white hover:border-dark-border transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-accent-blue"
           >
             {copiedMetrics ? (
               <>
-                <FiCheck className="w-4 h-4 text-emerald-400" aria-hidden="true" />
-                <span className="text-emerald-400 font-semibold">Metrics Copied!</span>
+                <FiCheck className="w-3.5 h-3.5 text-emerald-400" aria-hidden="true" />
+                <span className="text-emerald-400 font-medium">Metrics Copied</span>
               </>
             ) : (
               <>
-                <FiCopy className="w-4 h-4 text-warm-muted" aria-hidden="true" />
+                <FiCopy className="w-3.5 h-3.5 text-warm-muted" aria-hidden="true" />
                 <span>Copy metrics</span>
               </>
             )}
@@ -179,29 +179,29 @@ export default function ZeeAccountMetrics({
       {/* Main Metrics Area: Hero Tiles + Recap Screenshots */}
       <div className="space-y-8">
         <div>
-          <span className="font-mono text-xs tracking-widest uppercase text-warm-muted font-bold block mb-4">
+          <span className="font-mono text-xs tracking-wider uppercase text-warm-muted font-medium block mb-3">
             {data.heroSectionTitle}
           </span>
 
           {/* 4 Hero Tiles: 4 cols on desktop / 2 on tablet & phone */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {data.heroTiles.map((tile) => (
               <div
                 key={tile.id}
-                className="p-5 sm:p-6 rounded-2xl bg-dark-surface border border-white/[0.08] flex flex-col justify-between hover:border-white/20 transition-colors shadow-lg"
+                className="p-5 rounded-xl bg-dark-surface border border-dark-borderSubtle flex flex-col justify-between hover:border-dark-border transition-colors"
               >
-                <span className="font-mono text-[10px] sm:text-[11px] tracking-wider uppercase text-warm-muted block mb-2">
+                <span className="font-mono text-[11px] tracking-wider uppercase text-warm-muted block mb-1">
                   {tile.label}
                 </span>
 
                 <div className="my-1">
-                  <span className="text-3xl sm:text-4xl md:text-5xl font-black font-mono tracking-tight text-warm-white">
+                  <span className="text-2xl sm:text-3xl font-semibold font-mono tracking-tight text-warm-white tabular-nums">
                     {metricValues[tile.id] || tile.value}
                   </span>
                 </div>
 
-                <div className="pt-2 border-t border-white/[0.04] mt-2">
-                  <span className="text-[11px] text-warm-muted font-light">
+                <div className="pt-2 border-t border-dark-borderSubtle/60 mt-2">
+                  <span className="text-[11px] text-warm-muted font-normal">
                     {tile.id === "pieces-published"
                       ? "246 Reels + 1 feed post"
                       : tile.id === "views"
@@ -217,29 +217,29 @@ export default function ZeeAccountMetrics({
 
           {/* Supporting line */}
           <div className="mt-3 flex items-center justify-between text-xs font-mono text-warm-muted px-1">
-            <span>Supporting metric: <strong>{data.supportingLine}</strong></span>
+            <span>Supporting metric: <strong className="text-warm-white font-medium">{data.supportingLine}</strong></span>
             <span className="hidden sm:inline">Source: Official Instagram Monthly Recap</span>
           </div>
         </div>
 
         {/* Split Bar: 81% Non-followers vs 19% Followers */}
-        <div className="p-6 rounded-2xl bg-dark-surface border border-white/[0.08] space-y-4">
+        <div className="p-5 sm:p-6 rounded-xl bg-dark-surface border border-dark-borderSubtle space-y-3.5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
-              <h3 className="text-sm sm:text-base font-bold text-warm-white">
+              <h3 className="text-sm sm:text-base font-semibold text-warm-white">
                 View Distribution by Audience Relationship
               </h3>
-              <p className="text-xs text-warm-muted font-light">
-                One horizontal split showing the proportion of views from non-followers versus current followers.
+              <p className="text-xs text-warm-muted">
+                Proportion of views generated from non-followers versus current account followers.
               </p>
             </div>
             <div className="flex items-center gap-4 text-xs font-mono">
-              <span className="flex items-center gap-1.5 text-cyan-400">
-                <span className="w-2.5 h-2.5 rounded-full bg-cyan-500" aria-hidden="true" />
+              <span className="flex items-center gap-1.5 text-warm-white">
+                <span className="w-2 h-2 rounded-full bg-blue-500" aria-hidden="true" />
                 Non-followers: 81%
               </span>
               <span className="flex items-center gap-1.5 text-warm-muted">
-                <span className="w-2.5 h-2.5 rounded-full bg-white/20" aria-hidden="true" />
+                <span className="w-2 h-2 rounded-full bg-white/20" aria-hidden="true" />
                 Followers: 19%
               </span>
             </div>
@@ -252,17 +252,17 @@ export default function ZeeAccountMetrics({
             aria-valuemin={0}
             aria-valuemax={100}
             aria-label="81% Non-follower views vs 19% Follower views"
-            className="w-full h-8 sm:h-9 rounded-xl overflow-hidden bg-white/[0.08] flex border border-white/[0.1]"
+            className="w-full h-7 sm:h-8 rounded-lg overflow-hidden bg-white/[0.06] flex border border-dark-borderSubtle"
           >
             <div
               style={{ width: `${data.splitBar.nonFollowers}%` }}
-              className="h-full bg-gradient-to-r from-cyan-600 to-blue-600 flex items-center justify-center text-xs font-bold text-white tracking-wider font-mono shadow-inner transition-all duration-700"
+              className="h-full bg-blue-600 flex items-center justify-center text-xs font-medium text-white tracking-wider font-mono transition-all duration-500"
             >
               <span className="truncate px-2">{data.splitBar.labelNonFollowers}</span>
             </div>
             <div
               style={{ width: `${data.splitBar.followers}%` }}
-              className="h-full bg-white/[0.12] flex items-center justify-center text-xs font-bold text-warm-gray tracking-wider font-mono transition-all duration-700"
+              className="h-full bg-white/[0.08] flex items-center justify-center text-xs font-medium text-warm-gray tracking-wider font-mono transition-all duration-500"
             >
               <span className="truncate px-2">{data.splitBar.labelFollowers}</span>
             </div>

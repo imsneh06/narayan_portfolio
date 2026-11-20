@@ -28,7 +28,7 @@ export const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 py-5 sm:py-6 transition-all duration-300 pointer-events-none ${
+      className={`fixed top-0 left-0 w-full z-50 py-4 sm:py-5 transition-colors duration-200 pointer-events-none ${
         isOpen
           ? "mix-blend-normal bg-dark-surface/95 backdrop-blur-md border-b border-dark-borderSubtle md:bg-transparent md:border-b-0"
           : "mix-blend-difference"
@@ -39,23 +39,23 @@ export const Navbar = () => {
           isOpen ? "text-warm-white" : "text-white"
         }`}
       >
-        {/* Brand Logotype (Inverts dynamically against background when closed, theme-adaptive when open) */}
+        {/* Brand Logotype */}
         <Link
           href="/"
-          className={`group flex items-center gap-3 font-mono text-xs tracking-[0.25em] uppercase hover:opacity-75 transition-opacity ${
+          className={`group flex items-center gap-2.5 font-mono text-xs tracking-wider uppercase hover:opacity-80 transition-opacity ${
             isOpen ? "text-warm-white" : "text-white"
           }`}
         >
-          <span className={`w-2 h-2 rounded-full ${isOpen ? "bg-warm-white" : "bg-white"}`} />
-          <span className="font-bold">SHENEHASHIS</span>
+          <span className={`w-1.5 h-1.5 rounded-full ${isOpen ? "bg-warm-white" : "bg-white"}`} />
+          <span className="font-semibold">Shenehashis Dutta</span>
         </Link>
 
-        {/* Desktop Nav (Inverts per-letter over whatever is beneath) */}
+        {/* Desktop Nav */}
         <nav
           aria-label="Main Navigation"
-          className="hidden md:flex items-center gap-7"
+          className="hidden md:flex items-center gap-6"
         >
-          <div className="flex items-center gap-6 text-xs font-mono tracking-[0.18em] uppercase">
+          <div className="flex items-center gap-5 text-xs font-mono">
             {navLinks.map((link) => {
               const isActive =
                 link.href === "/"
@@ -68,8 +68,8 @@ export const Navbar = () => {
                   href={link.href}
                   className={`relative py-1 transition-opacity ${
                     isActive
-                      ? "text-white font-bold"
-                      : "text-white font-medium hover:opacity-75"
+                      ? "text-white font-semibold"
+                      : "text-white/80 font-normal hover:text-white"
                   }`}
                 >
                   {link.title}
@@ -85,29 +85,29 @@ export const Navbar = () => {
             })}
           </div>
 
-          <div className="h-4 w-[1px] bg-white/50" />
+          <div className="h-3.5 w-[1px] bg-white/30" />
 
-          {/* Theme Switcher Toggle (Inverts dynamically) */}
+          {/* Theme Switcher Toggle */}
           <button
             onClick={toggleTheme}
             aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
             title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-            className="p-2 rounded-full border border-white/60 hover:bg-white/20 text-white transition-all flex items-center justify-center min-w-[36px] min-h-[36px]"
+            className="p-1.5 rounded-md border border-white/40 hover:bg-white/15 text-white transition-colors flex items-center justify-center min-w-[32px] min-h-[32px]"
           >
             {theme === "dark" ? (
-              <FiSun size={15} />
+              <FiSun size={14} />
             ) : (
-              <FiMoon size={15} />
+              <FiMoon size={14} />
             )}
           </button>
 
-          {/* Contact CTA (Inverts dynamically) */}
+          {/* Contact CTA */}
           <Link
             href="/contact"
-            className="inline-flex items-center gap-1.5 text-xs font-mono tracking-[0.18em] uppercase text-white px-3.5 py-1.5 rounded-full border border-white/70 hover:bg-white/20 transition-all font-semibold"
+            className="inline-flex items-center gap-1.5 text-xs font-mono text-white px-3 py-1.5 rounded-md border border-white/60 hover:bg-white/15 transition-colors font-medium"
           >
             <span>Contact</span>
-            <FiArrowUpRight />
+            <FiArrowUpRight size={13} />
           </Link>
         </nav>
 
@@ -117,16 +117,16 @@ export const Navbar = () => {
           <button
             onClick={toggleTheme}
             aria-label="Toggle theme"
-            className={`p-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg transition-colors ${
+            className={`p-2 min-h-[40px] min-w-[40px] flex items-center justify-center rounded-md transition-colors ${
               isOpen
                 ? "border border-dark-borderSubtle text-warm-white hover:bg-dark-surface2"
-                : "border border-white/60 text-white"
+                : "border border-white/40 text-white"
             }`}
           >
             {theme === "dark" ? (
-              <FiSun size={18} />
+              <FiSun size={16} />
             ) : (
-              <FiMoon size={18} />
+              <FiMoon size={16} />
             )}
           </button>
 
@@ -134,30 +134,30 @@ export const Navbar = () => {
           <button
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close Menu" : "Open Menu"}
-            className={`p-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg transition-colors ${
+            className={`p-2 min-h-[40px] min-w-[40px] flex items-center justify-center rounded-md transition-colors ${
               isOpen
                 ? "border border-dark-borderSubtle text-warm-white hover:bg-dark-surface2"
-                : "text-white border border-white/60 hover:bg-white/20"
+                : "text-white border border-white/40 hover:bg-white/15"
             }`}
           >
-            {isOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+            {isOpen ? <FiX size={18} /> : <FiMenu size={18} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer (Uses regular stacking so the full menu is opaque & readable) */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-[65px] bg-dark-surface border-b border-dark-borderSubtle px-6 py-8 md:hidden shadow-2xl mix-blend-normal pointer-events-auto text-warm-white"
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.15 }}
+            className="fixed inset-x-0 top-[60px] bg-dark-surface border-b border-dark-borderSubtle px-6 py-6 md:hidden shadow-xl mix-blend-normal pointer-events-auto text-warm-white"
           >
-            <div className="flex flex-col space-y-5 text-left font-mono">
-              <span className="text-[10px] tracking-[0.25em] uppercase text-warm-muted pb-2 border-b border-dark-borderSubtle">
-                Index
+            <div className="flex flex-col space-y-4 text-left font-mono">
+              <span className="text-[11px] uppercase tracking-wider text-warm-muted pb-2 border-b border-dark-borderSubtle">
+                Navigation
               </span>
 
               {navLinks.map((link, idx) => {
@@ -168,12 +168,12 @@ export const Navbar = () => {
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-between py-2 text-sm uppercase tracking-[0.2em] transition-colors"
+                    className="flex items-center justify-between py-1.5 text-sm transition-colors"
                   >
                     <span
                       className={
                         isActive
-                          ? "text-warm-white font-bold"
+                          ? "text-warm-white font-medium"
                           : "text-warm-gray hover:text-warm-white"
                       }
                     >
@@ -186,13 +186,13 @@ export const Navbar = () => {
                 );
               })}
 
-              <div className="pt-4 mt-2 border-t border-dark-borderSubtle flex items-center justify-between">
+              <div className="pt-3 mt-2 border-t border-dark-borderSubtle flex items-center justify-between">
                 <Link
                   href="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="w-full text-center py-3 text-xs tracking-[0.2em] uppercase font-mono btn-primary font-semibold rounded-full"
+                  className="w-full text-center py-2.5 text-xs font-mono font-medium rounded-md bg-white text-dark-bg hover:bg-warm-white transition-colors"
                 >
-                  Get In Touch →
+                  Direct Contact
                 </Link>
               </div>
             </div>

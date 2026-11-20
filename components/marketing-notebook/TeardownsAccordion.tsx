@@ -37,7 +37,7 @@ export default function TeardownsAccordion({ items, note }: TeardownsAccordionPr
           return (
             <div
               key={item.id}
-              className="rounded-2xl border border-white/[0.08] bg-dark-surface overflow-hidden transition-all shadow-md"
+              className="rounded-xl border border-dark-borderSubtle bg-dark-surface overflow-hidden transition-colors"
             >
               {/* Accordion Header / Trigger Button */}
               <button
@@ -46,22 +46,22 @@ export default function TeardownsAccordion({ items, note }: TeardownsAccordionPr
                 aria-expanded={isOpen}
                 aria-controls={`accordion-content-${item.id}`}
                 onClick={() => toggleItem(item.id)}
-                className="w-full min-h-[52px] p-5 sm:p-6 text-left flex items-start sm:items-center justify-between gap-4 hover:bg-white/[0.02] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+                className="w-full min-h-[48px] p-4 sm:p-5 text-left flex items-start sm:items-center justify-between gap-4 hover:bg-dark-surface2/50 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-accent-blue"
               >
-                <div className="space-y-2 flex-1 min-w-0">
+                <div className="space-y-1.5 flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
-                    <span className="text-accent-blue font-bold">
+                    <span className="text-accent-blue font-semibold tabular-nums">
                       0{idx + 1}
                     </span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/[0.06] text-warm-white border border-white/[0.08] font-semibold">
+                    <span className="px-2 py-0.5 rounded-md bg-dark-surface2 text-warm-white border border-dark-borderSubtle font-medium">
                       {item.brand}
                     </span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/[0.03] text-warm-muted border border-white/[0.06]">
+                    <span className="px-2 py-0.5 rounded-md bg-dark-surface2 text-warm-muted border border-dark-borderSubtle">
                       {item.format}
                     </span>
                   </div>
 
-                  <h3 className="text-base sm:text-xl font-bold font-sans text-warm-white leading-snug">
+                  <h3 className="text-base sm:text-lg font-semibold font-sans text-warm-white leading-snug">
                     {item.title}
                   </h3>
                 </div>
@@ -70,9 +70,9 @@ export default function TeardownsAccordion({ items, note }: TeardownsAccordionPr
                   <span className="text-xs font-mono text-warm-muted hidden md:inline">
                     {isOpen ? "Collapse" : "Expand"}
                   </span>
-                  <div className="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-warm-gray">
+                  <div className="w-7 h-7 rounded-md bg-dark-surface2 border border-dark-borderSubtle flex items-center justify-center text-warm-gray">
                     <FiChevronDown
-                      className={`w-4 h-4 transition-transform duration-200 ${
+                      className={`w-3.5 h-3.5 transition-transform duration-200 ${
                         isOpen ? "rotate-180" : ""
                       }`}
                       aria-hidden="true"
@@ -86,36 +86,36 @@ export default function TeardownsAccordion({ items, note }: TeardownsAccordionPr
                 id={`accordion-content-${item.id}`}
                 role="region"
                 aria-labelledby={`accordion-btn-${item.id}`}
-                className={`p-5 sm:p-6 pt-0 border-t border-white/[0.06] space-y-6 bg-black/20 ${
+                className={`p-4 sm:p-5 pt-0 border-t border-dark-borderSubtle space-y-4 bg-dark-surface2/30 ${
                   isOpen ? "block" : "hidden"
                 }`}
               >
                 {/* Source Link */}
-                <div className="pt-4 flex items-center justify-between">
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-warm-muted">
-                    ORIGINAL REFERENCE
+                <div className="pt-3 flex items-center justify-between font-mono text-xs">
+                  <span className="text-[10px] uppercase tracking-wider text-warm-muted">
+                    Original reference
                   </span>
                   <a
                     href={item.sourceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 font-mono text-xs text-accent-blue hover:text-blue-300 transition-colors"
+                    className="inline-flex items-center gap-1 text-accent-blue hover:underline"
                   >
                     <span>{item.sourceLabel}</span>
-                    <FiExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+                    <FiExternalLink className="w-3 h-3" aria-hidden="true" />
                   </a>
                 </div>
 
                 {/* What Stood Out Bullets */}
-                <div className="space-y-3">
-                  <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-warm-muted">
-                    What Stood Out
+                <div className="space-y-2">
+                  <h4 className="text-xs font-mono uppercase tracking-wider text-warm-muted">
+                    What stood out
                   </h4>
-                  <ul className="space-y-2.5 font-sans">
+                  <ul className="space-y-1.5 font-sans">
                     {item.whatStoodOut.map((bullet, bIdx) => (
                       <li
                         key={bIdx}
-                        className="flex items-start gap-2.5 text-xs sm:text-sm text-warm-gray font-light leading-relaxed"
+                        className="flex items-start gap-2 text-xs sm:text-sm text-warm-gray leading-relaxed font-normal"
                       >
                         <span
                           className="w-1.5 h-1.5 rounded-full bg-accent-blue mt-2 shrink-0"
@@ -128,11 +128,11 @@ export default function TeardownsAccordion({ items, note }: TeardownsAccordionPr
                 </div>
 
                 {/* Takeaway Box */}
-                <div className="p-4 sm:p-5 rounded-xl bg-blue-500/10 border border-blue-500/20 space-y-1.5">
-                  <span className="font-mono text-[10px] uppercase tracking-wider font-bold text-blue-300 block">
-                    CORE TAKEAWAY
+                <div className="p-3.5 sm:p-4 rounded-lg bg-dark-surface2 border border-dark-borderSubtle space-y-1">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-accent-blue font-medium block">
+                    Core takeaway
                   </span>
-                  <p className="text-xs sm:text-sm text-blue-100 font-light italic leading-relaxed">
+                  <p className="text-xs sm:text-sm text-warm-white italic leading-relaxed">
                     &ldquo;{item.takeaway}&rdquo;
                   </p>
                 </div>

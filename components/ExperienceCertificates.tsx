@@ -199,42 +199,38 @@ export default function ExperienceCertificates() {
   }, [activeIndex, closeModal, showPrev, showNext]);
 
   return (
-    <section id="certificates" className="no-print print:hidden space-y-8 pt-8 border-t border-white/[0.06] scroll-mt-28">
+    <section id="certificates" className="no-print print:hidden space-y-6 pt-6 border-t border-dark-borderSubtle scroll-mt-28">
       {/* Section Header */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-warm-muted font-bold">
-              05 / EXPERIENCE CERTIFICATES
+          <div className="flex items-center gap-2 mb-1.5 font-mono text-xs">
+            <span className="uppercase tracking-wider text-warm-muted">
+              05 / Experience Certificates
             </span>
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
               <FiCheckCircle size={10} />
               <span>Verified Documents</span>
             </span>
           </div>
-          <h2 className="text-xl sm:text-2xl font-sans font-bold text-warm-white tracking-tight">
+          <h2 className="text-xl sm:text-2xl font-sans font-semibold text-warm-white tracking-tight">
             Work Experience Letters &amp; Credentials
           </h2>
-          <p className="text-xs sm:text-sm text-warm-gray font-light mt-1 max-w-2xl leading-relaxed">
+          <p className="text-xs sm:text-sm text-warm-gray mt-1 max-w-2xl leading-relaxed font-normal">
             Primary verification documents issued by employers and organizations, documenting roles, tenures, and performance.
           </p>
         </div>
 
-        <span className="font-mono text-xs text-warm-muted shrink-0 hidden sm:block">
+        <span className="font-mono text-xs text-warm-muted shrink-0 hidden sm:block tabular-nums">
           {EXPERIENCE_CERTIFICATES.length} Certificates · High-Res Lightbox
         </span>
       </div>
 
       {/* Responsive Cards Grid (1 col mobile, 2 col tablet+) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         {EXPERIENCE_CERTIFICATES.map((cert, index) => (
-          <motion.article
+          <article
             key={cert.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.45, delay: index * 0.08 }}
-            className="group rounded-2xl bg-black/40 border border-white/[0.06] hover:border-white/20 transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-xl hover:shadow-black/40"
+            className="group rounded-xl bg-dark-surface border border-dark-borderSubtle hover:border-dark-border transition-colors flex flex-col justify-between overflow-hidden"
           >
             <div>
               {/* Thumbnail Container */}
@@ -246,7 +242,7 @@ export default function ExperienceCertificates() {
                 onContextMenu={(e) => e.preventDefault()}
                 onDragStart={(e) => e.preventDefault()}
                 style={{ WebkitUserSelect: "none", userSelect: "none" }}
-                className="relative w-full aspect-[4/3] bg-[#0c0c0d] dark:bg-[#0c0c0d] border-b border-white/[0.06] flex items-center justify-center p-4 cursor-pointer overflow-hidden group/thumb select-none"
+                className="relative w-full aspect-[4/3] bg-dark-surface2 border-b border-dark-borderSubtle flex items-center justify-center p-4 cursor-pointer overflow-hidden group/thumb select-none"
               >
                 <div className="relative w-full h-full flex items-center justify-center pointer-events-none">
                   <Image
@@ -254,7 +250,7 @@ export default function ExperienceCertificates() {
                     alt={cert.alt}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
-                    className="object-contain drop-shadow-md transition-transform duration-500 group-hover/thumb:scale-105 pointer-events-none select-none"
+                    className="object-contain drop-shadow-sm pointer-events-none select-none transition-opacity duration-300"
                     loading="lazy"
                     draggable={false}
                   />
@@ -267,8 +263,8 @@ export default function ExperienceCertificates() {
                 />
 
                 {/* Subtle Hover Action Pill */}
-                <div className="absolute inset-0 z-20 bg-black/50 opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                  <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-black font-mono text-xs uppercase tracking-wider font-semibold shadow-lg transform translate-y-2 group-hover/thumb:translate-y-0 transition-transform duration-300">
+                <div className="absolute inset-0 z-20 bg-black/40 opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-dark-surface text-warm-white font-mono text-xs border border-dark-border shadow-md">
                     <FiMaximize2 size={12} />
                     <span>View Document</span>
                   </span>
@@ -276,43 +272,44 @@ export default function ExperienceCertificates() {
 
                 {/* Document Type Badge */}
                 <div className="absolute top-3 left-3">
-                  <span className="px-2.5 py-1 rounded-md bg-black/85 backdrop-blur-md border border-white/[0.1] font-mono text-[9px] uppercase tracking-wider text-warm-white font-medium">
+                  <span className="px-2 py-0.5 rounded bg-dark-surface/90 border border-dark-borderSubtle font-mono text-[10px] text-warm-white font-normal">
                     {cert.documentType}
                   </span>
                 </div>
 
                 {/* Order Index */}
                 <div className="absolute top-3 right-3">
-                  <span className="font-mono text-[10px] text-warm-muted">
+                  <span className="font-mono text-[10px] text-warm-muted tabular-nums">
                     0{index + 1}
                   </span>
                 </div>
               </div>
 
               {/* Card Meta Body */}
-              <div className="p-5 sm:p-6 space-y-3">
-                <div className="space-y-1">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-accent-blue font-semibold block">
+              <div className="p-5 sm:p-6 space-y-2.5">
+                <div className="space-y-0.5">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-accent-blue font-medium block">
                     {cert.role}
                   </span>
-                  <h3 className="text-base font-sans font-bold text-warm-white group-hover:text-accent-blue transition-colors leading-snug">
+                  <h3 className="text-base font-sans font-semibold text-warm-white group-hover:text-accent-blue transition-colors leading-snug">
                     {cert.company}
                   </h3>
                 </div>
 
-                <div className="pt-1 flex flex-wrap items-center gap-y-1.5 gap-x-4 font-mono text-xs text-warm-gray">
-                  <span className="inline-flex items-center gap-1.5 text-warm-muted">
-                    <FiCalendar size={12} className="shrink-0" />
+                <div className="pt-0.5 flex flex-wrap items-center gap-y-1 gap-x-3 font-mono text-xs text-warm-muted">
+                  <span className="inline-flex items-center gap-1.5">
+                    <FiCalendar size={12} className="shrink-0 text-warm-muted" />
                     <span>{cert.dateRange}</span>
                   </span>
-                  <span className="inline-flex items-center gap-1.5 text-warm-muted">
-                    <FiMapPin size={12} className="shrink-0" />
+                  <span>·</span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <FiMapPin size={12} className="shrink-0 text-warm-muted" />
                     <span>{cert.location}</span>
                   </span>
                 </div>
 
                 {cert.description && (
-                  <p className="text-xs text-warm-gray/90 font-light leading-relaxed pt-1">
+                  <p className="text-xs text-warm-gray font-normal leading-relaxed pt-0.5">
                     {cert.description}
                   </p>
                 )}
@@ -320,8 +317,8 @@ export default function ExperienceCertificates() {
             </div>
 
             {/* Card Action Footer */}
-            <div className="p-5 sm:p-6 pt-0 flex items-center justify-between border-t border-white/[0.04] mt-2">
-              <span className="font-mono text-[11px] text-warm-muted inline-flex items-center gap-1">
+            <div className="p-5 sm:p-6 pt-0 flex items-center justify-between border-t border-dark-borderSubtle/60 mt-1 font-mono text-xs">
+              <span className="text-warm-muted inline-flex items-center gap-1">
                 <FiFileText size={11} />
                 <span>Verified Copy</span>
               </span>
@@ -334,13 +331,13 @@ export default function ExperienceCertificates() {
                   setActiveIndex(index);
                   setIsZoomed(false);
                 }}
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/[0.12] hover:border-white/30 hover:bg-white/[0.06] text-xs font-mono uppercase tracking-wider text-warm-white transition-all group-hover:border-accent-blue/50"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-dark-borderSubtle bg-dark-surface2 hover:border-dark-border text-warm-white transition-colors"
               >
                 <span>View Certificate</span>
-                <FiMaximize2 size={12} className="text-accent-blue" />
+                <FiMaximize2 size={12} className="text-warm-muted" />
               </button>
             </div>
-          </motion.article>
+          </article>
         ))}
       </div>
 

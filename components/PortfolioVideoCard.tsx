@@ -80,18 +80,18 @@ export function PortfolioVideoPreview({
           loop
           playsInline
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover/vid:scale-105"
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
         />
       ) : item.poster ? (
         <Image
           src={item.poster}
           alt={item.title}
           fill
-          className="object-cover transition-transform duration-700 ease-out group-hover/vid:scale-105"
+          className="object-cover transition-opacity duration-300"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
       ) : (
-        <div className="absolute inset-0 bg-[#161616] flex items-center justify-center">
+        <div className="absolute inset-0 bg-dark-surface flex items-center justify-center">
           <span className="font-mono text-xs text-warm-muted">{item.title}</span>
         </div>
       )}
@@ -101,30 +101,30 @@ export function PortfolioVideoPreview({
 
       {/* Floating Play / Expand Badge */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white flex items-center justify-center group-hover/vid:scale-110 group-hover/vid:bg-white group-hover/vid:text-black transition-all shadow-xl">
-          <FiPlay size={20} className="ml-0.5" />
+        <div className="w-12 h-12 rounded-full bg-dark-surface/90 border border-white/20 text-warm-white flex items-center justify-center group-hover/vid:bg-white group-hover/vid:text-dark-bg transition-colors shadow-md">
+          <FiPlay size={18} className="ml-0.5" />
         </div>
       </div>
 
       {/* Top Badges */}
-      <div className="absolute top-4 inset-x-4 flex items-center justify-between font-mono text-[10px] pointer-events-none z-10">
+      <div className="absolute top-3.5 inset-x-3.5 flex items-center justify-between font-mono text-[10px] pointer-events-none z-10">
         {item.format && (
-          <span className="px-2.5 py-1 rounded bg-black/80 backdrop-blur-md border border-white/[0.1] uppercase tracking-wider text-warm-white">
+          <span className="px-2 py-0.5 rounded bg-black/80 border border-white/10 uppercase tracking-wider text-warm-white">
             {item.format}
           </span>
         )}
         {item.duration && (
-          <span className="px-2 py-0.5 rounded bg-black/80 text-warm-gray border border-white/[0.06]">
+          <span className="px-2 py-0.5 rounded bg-black/80 text-warm-muted border border-white/10 tabular-nums">
             {item.duration}
           </span>
         )}
       </div>
 
       {/* Bottom Label */}
-      <div className="absolute bottom-4 inset-x-4 font-mono text-[11px] text-warm-muted truncate pointer-events-none z-10 flex items-center justify-between">
+      <div className="absolute bottom-3.5 inset-x-3.5 font-mono text-[11px] text-warm-muted truncate pointer-events-none z-10 flex items-center justify-between">
         <span>Brand: {item.brand}</span>
         {driveId && !item.videoSrc && (
-          <span className="text-[9px] text-accent-blue uppercase tracking-wider font-semibold">
+          <span className="text-[10px] text-accent-blue uppercase tracking-wider font-medium">
             G-Drive Video
           </span>
         )}
@@ -163,36 +163,36 @@ export function VideoPlayerModal({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md p-4 sm:p-6 flex items-center justify-center overflow-y-auto"
+        className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm p-4 sm:p-6 flex items-center justify-center overflow-y-auto"
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-video-title"
       >
         <motion.div
-          initial={{ scale: 0.95, opacity: 0 }}
+          initial={{ scale: 0.98, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.95, opacity: 0 }}
+          exit={{ scale: 0.98, opacity: 0 }}
           onClick={(e) => e.stopPropagation()}
-          className="relative max-w-4xl w-full bg-[#111111] border border-white/[0.12] rounded-3xl p-6 sm:p-8 space-y-6 max-h-[92vh] overflow-y-auto my-auto shadow-2xl text-warm-white"
+          className="relative max-w-4xl w-full bg-dark-surface border border-dark-borderSubtle rounded-2xl p-6 sm:p-8 space-y-6 max-h-[92vh] overflow-y-auto my-auto shadow-xl text-warm-white"
         >
           {/* Modal Header */}
           <div className="flex items-start justify-between gap-4">
             <div>
-              <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-warm-muted">
+              <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-warm-muted">
                 <span>{item.brand}</span>
                 {item.format && <span>· {item.format}</span>}
-                {item.duration && <span>· {item.duration}</span>}
+                {item.duration && <span className="tabular-nums">· {item.duration}</span>}
               </div>
-              <h3 id="modal-video-title" className="text-2xl sm:text-3xl font-sans font-bold text-warm-white mt-1">
+              <h3 id="modal-video-title" className="text-xl sm:text-2xl font-sans font-semibold text-warm-white mt-1">
                 {item.title}
               </h3>
             </div>
             <button
               onClick={onClose}
-              className="p-2.5 rounded-full bg-white/[0.05] hover:bg-white/[0.15] text-warm-white transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center shrink-0"
+              className="p-2 rounded-md border border-dark-borderSubtle bg-dark-surface2 hover:bg-dark-surface text-warm-white transition-colors min-h-[36px] min-w-[36px] flex items-center justify-center shrink-0"
               aria-label="Close video player"
             >
-              <FiX size={20} />
+              <FiX size={18} />
             </button>
           </div>
 
