@@ -164,7 +164,7 @@ export default function ContactPage() {
                 </p>
                 <div className="pt-2">
                   <a
-                    href="https://drive.google.com/file/d/1X_G8QEqNvXD9L2pKJyUtxjafG1xzIGo8/view?usp=sharing"
+                    href="https://drive.google.com/file/d/185494u4R1dLbgnbQKxqLRyc1aL6FcCvp/view?usp=drive_link"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/[0.1] font-mono text-xs uppercase tracking-wider text-warm-white transition-all"

@@ -153,7 +153,7 @@ export default function ExperiencePage() {
               </div>
 
               <a
-                href="https://drive.google.com/file/d/1X_G8QEqNvXD9L2pKJyUtxjafG1xzIGo8/view?usp=sharing"
+                href="https://drive.google.com/file/d/185494u4R1dLbgnbQKxqLRyc1aL6FcCvp/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-dark-surface border border-white/[0.12] hover:border-white/30 text-xs font-mono uppercase tracking-[0.18em] text-warm-white transition-all shrink-0"

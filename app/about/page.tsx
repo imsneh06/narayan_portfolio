@@ -110,7 +110,7 @@ export default function AboutPage() {
 
               <div className="pt-2">
                 <a
-                  href="https://drive.google.com/file/d/1X_G8QEqNvXD9L2pKJyUtxjafG1xzIGo8/view?usp=sharing"
+                  href="https://drive.google.com/file/d/185494u4R1dLbgnbQKxqLRyc1aL6FcCvp/view?usp=drive_link"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full btn-primary font-mono text-xs uppercase tracking-[0.2em] font-semibold transition-all"

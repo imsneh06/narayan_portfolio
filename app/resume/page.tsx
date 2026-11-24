@@ -117,7 +117,7 @@ export default function ResumePage() {
               </button>
 
               <a
-                href="https://drive.google.com/file/d/1X_G8QEqNvXD9L2pKJyUtxjafG1xzIGo8/view?usp=sharing"
+                href="https://drive.google.com/file/d/185494u4R1dLbgnbQKxqLRyc1aL6FcCvp/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2 rounded-full btn-primary font-mono text-xs uppercase tracking-wider font-semibold transition-colors"

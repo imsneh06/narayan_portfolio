@@ -101,7 +101,7 @@ export const Footer = () => {
 
             <div className="pt-2">
               <a
-                href="https://drive.google.com/file/d/1X_G8QEqNvXD9L2pKJyUtxjafG1xzIGo8/view?usp=sharing"
+                href="https://drive.google.com/file/d/185494u4R1dLbgnbQKxqLRyc1aL6FcCvp/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-3.5 py-2 rounded-md bg-dark-surface border border-dark-borderSubtle hover:border-dark-border text-xs text-warm-white hover:bg-dark-surface2 transition-colors"
